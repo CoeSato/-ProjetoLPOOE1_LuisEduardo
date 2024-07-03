@@ -11,10 +11,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestePersistenciaModalidade {
+public class TestePersistenciaObjetos {
     PersistenciaJPA jpa = new PersistenciaJPA();
     
-    public TestePersistenciaModalidade() {
+    public TestePersistenciaObjetos() {
     }
     
     @Before // o que fazer antes da persistencia
