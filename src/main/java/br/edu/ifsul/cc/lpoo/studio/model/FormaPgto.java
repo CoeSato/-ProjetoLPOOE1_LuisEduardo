@@ -4,10 +4,6 @@
  */
 package br.edu.ifsul.cc.lpoo.studio.model;
 
-/**
- *
- * @author 20222PF.CC0025
- */
 public enum FormaPgto {
-    DINHEIRO, PIX;
+    PIX, DINHEIRO;
 }

@@ -4,13 +4,9 @@
  */
 package br.edu.ifsul.cc.lpoo.studio.model;
 
-/**
- *
- * @author 20222PF.CC0025
- */
-
 import java.io.Serializable;
 import java.util.Calendar;
+import javax.annotation.processing.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,26 +14,38 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.ManyToAny;
 
+/**
+ *
+ * @author vanessalagomachado
+ */
 @Entity
-public class Pagamento implements Serializable{
+@Table(name = "tb_pagamento")
+public class Pagamento implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name="pagamento_id")
-    private int id;
     
-    @Column(name="pagamento_dataVcto", nullable = false)
+    @Column(name = "pagamento_id")
+    private Integer id;
+
+    @Column(name = "pagamento_data_vcmto", nullable = false)
     private Calendar dataVcto;
-    
-    @Column(name="pagamento_valor")
+
+    @Column(name = "pagamento_valor")
     private Double valor;
-    
-    @Column(name="pagamento_dataPgto")
+
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @Column(name = "pagamento_data_pgto")
     private Calendar dataPgto;
-    
-    @Column(name="pagamento_valorPgto")
+
+    @Column(name = "pagamento_valor_pgto", precision = 2)
     private Double valorPgto;
-    
+
     @ManyToOne
     @JoinColumn(name="contrato_id")
     private Contrato contrato;
@@ -46,7 +54,7 @@ public class Pagamento implements Serializable{
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -80,6 +88,14 @@ public class Pagamento implements Serializable{
 
     public void setValorPgto(Double valorPgto) {
         this.valorPgto = valorPgto;
+    }
+
+    public Contrato getContrato() {
+        return contrato;
+    }
+
+    public void setContrato(Contrato contrato) {
+        this.contrato = contrato;
     }
 
 }

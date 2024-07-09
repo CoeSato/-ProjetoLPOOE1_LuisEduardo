@@ -7,15 +7,17 @@ package br.edu.ifsul.cc.lpoo.studio.model;
 import java.util.Calendar;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-/**
- *
- * @author 20222PF.CC0025
- */
 @Entity
+@Table(name = "tb_contrato")
 public class Contrato {
 
     @Id
@@ -23,15 +25,25 @@ public class Contrato {
     @Column(name="contrato_id")
     private int id;
     
-    @Column(name="contrato_dataInicio", nullable = false)
+    @Column(name="contrato_data_inicio", nullable = false)
     private Calendar dataInicio;
     
-    @Column(name="contrato_valor", precision=2)
-    private Double valorDesconto;
+    @Column(name="contrato_valor", precision = 2)
+    private double valor;
     
-    @Column(name="contrato_formaPgto")
-    private FormaPgto formaPgto;
+    @Column(name = "contrato_forma_pgto")
+    @Enumerated(EnumType.STRING) 
+    
+    private FormaPgto forma_pgto;
 
+    public Contrato() {
+        dataInicio = Calendar.getInstance();
+    }
+    
+    @ManyToOne
+    @JoinColumn(name="aluno_id")
+    private Aluno aluno;
+    
     public int getId() {
         return id;
     }
@@ -48,23 +60,29 @@ public class Contrato {
         this.dataInicio = dataInicio;
     }
 
-    public Double getValorDesconto() {
-        return valorDesconto;
+    public double getValor() {
+        return valor;
     }
 
-    public void setValorDesconto(Double valorDesconto) {
-        this.valorDesconto = valorDesconto;
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 
-    public FormaPgto getFormaPgto() {
-        return formaPgto;
+    public FormaPgto getForma_pgto() {
+        return forma_pgto;
     }
 
-    public void setFormaPgto(FormaPgto formaPgto) {
-        this.formaPgto = formaPgto;
+    public void setForma_pgto(FormaPgto forma_pgto) {
+        this.forma_pgto = forma_pgto;
     }
-    
-    
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
     
     
     

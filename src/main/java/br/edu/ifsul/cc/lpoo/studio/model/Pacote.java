@@ -4,27 +4,35 @@
  */
 package br.edu.ifsul.cc.lpoo.studio.model;
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-public class Modalidade implements Serializable{
-    @Id
+@Table(name="tb_pacote")
+public class Pacote{
+
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int id; 
+    @Id
+    @Column(name = "pacote_id")
+    private int id;
     
-    @Column(name = "descricao")
+    @Column(name = "pacote_descricao", nullable = false, length = 120)
     private String descricao;
     
-    @Column(name = "professor")
-    private Professor professor;
-
-    public Integer getId() {
+    @Column(name = "pacote_valor", nullable = false, precision = 2)
+    private double valor;
+    
+    @ManyToOne
+    @JoinColumn(name = "modalidade_id")
+    private Modalidade modalidade;
+    
+    public int getId() {
         return id;
     }
 
@@ -40,15 +48,21 @@ public class Modalidade implements Serializable{
         this.descricao = descricao;
     }
 
-    public Professor getProfessor() {
-        return professor;
+    public double getValor() {
+        return valor;
     }
 
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
+    public void setValor(double valor) {
+        this.valor = valor;
     }
-    
-    
+
+    public Modalidade getModalidade() {
+        return modalidade;
+    }
+
+    public void setModalidade(Modalidade modalidade) {
+        this.modalidade = modalidade;
+    }
     
     
 }
