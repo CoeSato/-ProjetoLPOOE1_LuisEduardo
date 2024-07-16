@@ -34,13 +34,11 @@ public class TestePersistenciaObjetos {
     @Test
     public void test() throws Exception{
         Cliente c = new Cliente();
-        c.setId(1);
         c.setNome("Robisvaldo Franco");
         c.setEmail("robisvaldo.franco@gmail.com");
         c.setTelefone("9999999999");
          
         Bibliotecario b = new Bibliotecario();
-        b.setCodigoBibliotecario(5);
         b.setNomeBibliotecario("Marilurde Pierre");
         b.setSalario(2500.00);
         b.setTelefone("8888888888");
@@ -53,7 +51,6 @@ public class TestePersistenciaObjetos {
         b.setDataAdmissao(cal);
         
         Reserva r = new Reserva();
-        r.setCodigoReserva(10);
         r.setLivroReservado("Apostila Java I");
         r.setBibliotecario(b);
         r.setCliente(c);
@@ -70,17 +67,17 @@ public class TestePersistenciaObjetos {
         jpa.persist(b);
         jpa.persist(r);
          
-        Cliente persistidoCliente = (Cliente)jpa.find(Cliente.class, c.getNome());
+        Cliente persistidoCliente = (Cliente)jpa.find(Cliente.class, c.getId());
             Assert.assertEquals(c.getNome(), 
                 persistidoCliente.getNome());
             
         Bibliotecario persistidoBibliotecario = (Bibliotecario)jpa.find(Bibliotecario.class, b.getCodigoBibliotecario());
-            Assert.assertEquals(b.getCodigoBibliotecario(), 
-                persistidoBibliotecario.getCodigoBibliotecario());
+            Assert.assertEquals(b.getNomeBibliotecario(), 
+                persistidoBibliotecario.getNomeBibliotecario());
         
         Reserva persistidoReserva = (Reserva)jpa.find(Reserva.class, r.getCodigoReserva());
-            Assert.assertEquals(r.getCodigoReserva(), 
-                persistidoReserva.getCodigoReserva());   
+            Assert.assertEquals(r.getLivroReservado(), 
+                persistidoReserva.getLivroReservado());   
     }
     
 }
