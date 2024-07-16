@@ -2,12 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package br.edu.ifsul.cc.lpoo.studio.dao;
+package br.edu.ifsul.cc.lpoo.projetolpooe1_luiseduardoantunes.dao;
 
-/**
- *
- * @author vanessalagomachado
- */
 public interface InterfacePersistencia {
     public Boolean conexaoAberta();
     public void fecharConexao();

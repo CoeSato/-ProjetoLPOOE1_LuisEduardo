@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package br.edu.ifsul.cc.lpoo.studio;
+package br.edu.ifsul.cc.lpoo.projetolpooe1_luiseduardoantunes;
 
 /**
  *
  * @author User
  */
-public class LPOO_StudioDanca {
+public class ProjetoLPOOE1_LuisEduardoAntunes {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
